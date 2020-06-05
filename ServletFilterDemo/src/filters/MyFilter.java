@@ -13,9 +13,16 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
 /**
- * Servlet Filter implementation class MyFilter
+ * Servlet Filter implementation class MyFilter 
+ * Usage of Filter 
+ * recording all incoming requests
+ * logs the IP addresses of the computers from which the requests originate
+ * conversion data 
+ * compression encryption and decryption
+ * input validation etc.
  */
-@WebFilter("/MyFilter")
+// @WebFilter("/MyFilter")
+//With above annotation we can directly map filter without included in web.xml file.
 public class MyFilter implements Filter {
 
 	/**
@@ -42,13 +49,12 @@ public class MyFilter implements Filter {
 
 		// pass the request along the filter chain
 		PrintWriter out = response.getWriter();
-		String pass = request.getParameter("pass");
-		if (pass.equals("1234")) {
-			chain.doFilter(request, response);
-		} else {
-			out.println("You have enter a wrong password");
+		if (request.getParameter("user").contains(" ") || request.getParameter("pass").contains(" ")) {
+			out.println("You have enter a wrong usename or password");
 			RequestDispatcher rs = request.getRequestDispatcher("Index.html");
 			rs.include(request, response);
+		} else {
+			chain.doFilter(request, response);
 		}
 	}
 

@@ -13,7 +13,7 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>MyFilter</filter-name>
-		<servlet-name>First</servlet-name>
+		<url-pattern>/First</url-pattern>
 	</filter-mapping>
 	<servlet>
 		<servlet-name>First</servlet-name>

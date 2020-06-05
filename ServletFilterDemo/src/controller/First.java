@@ -42,7 +42,7 @@ public class First extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		String user = request.getParameter("user");
-		out.println("Wellcome " + user);
+		out.println("Welcome " + user);
 	}
 
 }
