@@ -49,8 +49,8 @@ public class MyFilter implements Filter {
 
 		// pass the request along the filter chain
 		PrintWriter out = response.getWriter();
-		if (request.getParameter("user").contains(" ") || request.getParameter("pass").contains(" ")) {
-			out.println("You have enter a wrong usename or password");
+		if (request.getParameter("user").isEmpty() || request.getParameter("pass").isEmpty()) {
+			out.println("Please enter valid username or password!");
 			RequestDispatcher rs = request.getRequestDispatcher("Index.html");
 			rs.include(request, response);
 		} else {
